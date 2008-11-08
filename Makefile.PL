@@ -1,8 +1,8 @@
 use inc::Module::Install;
-name 'Bot-BasicBot-Pluggable-Module-ChokanKarma';
-all_from 'lib/Bot/BasicBot/Pluggable/Module/ChokanKarma.pm';
+name 'Bot-BasicBot-Pluggable-Module-GoodBad';
+all_from 'lib/Bot/BasicBot/Pluggable/Module/GoodBad.pm';
 
-requires $_ for (qw/ /);
+requires 'Bot::BasicBot::Pluggable';
 
 build_requires 'Test::More';
 use_test_base;

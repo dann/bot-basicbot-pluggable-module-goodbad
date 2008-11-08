@@ -1,4 +1,4 @@
 use strict;
 use Test::More tests => 1;
 
-BEGIN { use_ok 'Bot::BasicBot::Pluggable::Module::ChokanKarma' }
+BEGIN { use_ok 'Bot::BasicBot::Pluggable::Module::GoodBad' }
