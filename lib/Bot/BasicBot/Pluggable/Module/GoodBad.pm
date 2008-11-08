@@ -26,6 +26,8 @@ Decreases the karma for <thing>
 =cut
 
 package Bot::BasicBot::Pluggable::Module::GoodBad;
+our $VERSION = '0.01';
+
 use warnings;
 use strict;
 use base qw(Bot::BasicBot::Pluggable::Module);
