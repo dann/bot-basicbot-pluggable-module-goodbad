@@ -29,7 +29,7 @@ package Bot::BasicBot::Pluggable::Module::GoodBad;
 use strict;
 use warnings;
 
-our $VERSION = '0.02';
+our $VERSION = '0.03';
 use base qw(Bot::BasicBot::Pluggable::Module);
 
 sub said {
@@ -101,7 +101,7 @@ sub get_goodbad {
 sub reply_with_goodbad {
     my ( $self, $message, $target ) = @_;
     my ( $good, $bad ) = $self->get_goodbad($target);
-    my $reply .= $target . " (" . $good . "++, " . $bad . "--" . ")";
+    my $reply .= "\cC14" . $target . " (" . $good . "++, " . $bad . "--" . ")";
     $self->reply( $message, $reply ) if $reply;
 }
 
