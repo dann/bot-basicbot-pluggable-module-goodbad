@@ -1,7 +1,7 @@
 
 =head1 NAME
 
-Bot::BasicBot::Pluggable::Module::GoodBad
+Bot::BasicBot::Pluggable::Module::GoodBad - Tracks Good/Bad for people
 
 =head1 SYNOPSIS
 
@@ -26,36 +26,26 @@ Decreases the karma for <thing>
 =cut
 
 package Bot::BasicBot::Pluggable::Module::GoodBad;
-our $VERSION = '0.01_01';
-
-use warnings;
 use strict;
+use warnings;
+
+our $VERSION = '0.02';
 use base qw(Bot::BasicBot::Pluggable::Module);
 
 sub said {
     my ( $self, $mess, $pri ) = @_;
     my $body = $mess->{body};
-
-    my ( $command, $param ) = split( /\s+/, $body, 2 );
-    $command = lc($command);
-    $param =~ s/\?*\s*$// if $param;
-
     if ( $pri == 0 ) {
         if (   ( $body =~ /(\w+)\+\+\s*/ )
             or ( $body =~ /\(([\w\s]+)\)\+\+\s*/ ) )
         {
-
-            #print STDERR "$1++\n";
             $self->good( $1, 1, $mess->{who} );
-
             return $self->reply_with_goodbad( $mess, $1 );
         }
         elsif (( $body =~ /(\w+)\-\-/ )
             or ( $body =~ /\(([\w\s]+)\)\-\-/ ) )
         {
-
-            #print STDERR "$1--\n";
-            $self->bad( $1, 0, $', $mess->{who} );
+            $self->bad( $1, 0, $mess->{who} );
             return $self->reply_with_goodbad( $mess, $1 );
         }
     }
@@ -111,7 +101,7 @@ sub get_goodbad {
 sub reply_with_goodbad {
     my ( $self, $message, $target ) = @_;
     my ( $good, $bad ) = $self->get_goodbad($target);
-    my $reply .= $target . "(" . $good . "++, " . $bad . "--" . ")";
+    my $reply .= $target . " (" . $good . "++, " . $bad . "--" . ")";
     $self->reply( $message, $reply ) if $reply;
 }
 

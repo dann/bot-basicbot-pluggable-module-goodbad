@@ -1,4 +1,7 @@
 Revision history for Perl extension Bot::BasicBot::Pluggable::Module::GoodBad
 
+0.02 Sun Nov  9 13:54:00 2008
+	* fixed negative karma method
+
 0.01_01 Sun Nov  9 00:56:58 2008
 	* original version
